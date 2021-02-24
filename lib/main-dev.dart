@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:respi_app/app_config.dart';
+import 'package:respi_app/components/custom_button.dart';
+import 'package:respi_app/components/item_setting.dart';
+import 'package:respi_app/utils/colors.dart';
 
 void main() {
   var configApp = AppConfig(
@@ -15,6 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var config = AppConfig.of(context);
+
     return MaterialApp(
       title: config.appName,
       theme: ThemeData(
@@ -35,43 +39,70 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
+      body: Column(
+        children: [
+          Container(
+            height: 60,
+            color: AppColors.BACKGROUND_Navigation,
+            margin: EdgeInsets.only(left: 16),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    '通信ネブライザーでの服薬設定',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Container(
+                  width: 60,
+                  height: 28,
+                  margin: EdgeInsets.only(right: 16),
+                  child: MaterialButton(
+                    onPressed: () {
+                      print('object');
+                    },
+                    child: Text(
+                      'EDIT',
+                      style: TextStyle(fontSize: 12),
+                    ),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(4),
+                        side: BorderSide(color: Colors.black)),
+                  ),
+                )
+              ],
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
+          ),
+          ItemSetting(
+            title: 'Daily meds',
+            subtext: 'Abedo',
+            action: () {
+              print('onpress');
+            },
+          ),
+          ItemSetting(
+            title: 'Quick-Relief used',
+            subtext: 'saifdo…',
+            action: () {
+              print('onpress');
+            },
+          ),
+          ItemSetting(
+            title: 'Other',
+            subtext: '',
+            action: () {
+              print('onpress');
+            },
+            maxUnderLine: true,
+          )
+        ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
