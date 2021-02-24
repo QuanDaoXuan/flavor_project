@@ -2,13 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:respi_app/utils/colors.dart';
 
-class ItemSetting extends StatelessWidget {
+class ItemSettingScan extends StatelessWidget {
   final String title;
   final String subtext;
   // final String mode;
   final Function action;
   final bool maxUnderLine;
-  ItemSetting(
+  ItemSettingScan(
       {@required this.title,
       @required this.action,
       @required this.subtext,

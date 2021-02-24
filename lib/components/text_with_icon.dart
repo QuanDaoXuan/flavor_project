@@ -2,13 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:respi_app/utils/colors.dart';
 
-class ItemSetting extends StatelessWidget {
+class TextWithIcon extends StatelessWidget {
   final String title;
   final String subtext;
   // final String mode;
   final Function action;
   final bool maxUnderLine;
-  ItemSetting(
+  TextWithIcon(
       {@required this.title,
       @required this.action,
       @required this.subtext,
@@ -21,15 +21,9 @@ class ItemSetting extends StatelessWidget {
         children: [
           Container(
             height: 54,
+            margin: EdgeInsets.only(left: 16),
             child: Row(
               children: [
-                Container(
-                  width: 60,
-                  child: new Icon(
-                    Icons.star,
-                    color: Colors.red[500],
-                  ),
-                ),
                 Expanded(
                   flex: 5,
                   child: Text(
